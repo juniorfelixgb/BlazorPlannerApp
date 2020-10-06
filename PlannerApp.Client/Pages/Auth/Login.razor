@@ -4,6 +4,7 @@
 @inject AuthenticationService _authService
 @inject NavigationManager _navigationManager
 @inject ILocalStorageService _storageService
+@inject AuthenticationStateProvider _authenticationStateProvider
 
 <div class="row">
     <div class="col-12">
@@ -55,9 +56,6 @@
         var result = await _authService.LoginUserAsync(model);
         if (result.IsSuccess)
         {
-            message = "Welcome to WebApp";
-            UserInfo = result.UserInfo;
-            messageType = Models.AlertMessageType.Success;
             var userInfo = new LocalUserInfo()
             {
                 AccessToken = result.Message,
@@ -67,6 +65,8 @@
                 Id = result.UserInfo[System.Security.Claims.ClaimTypes.NameIdentifier]
             };
             await _storageService.SetItemAsync<LocalUserInfo>("User", userInfo);
+            await _authenticationStateProvider.GetAuthenticationStateAsync();
+            _navigationManager.NavigateTo("/");
         }
         else
         {

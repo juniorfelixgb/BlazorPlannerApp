@@ -1,0 +1,9 @@
+﻿@page "/auth/redirectologin"
+@inject NavigationManager _navigationManager
+
+@code { 
+    protected async override Task OnInitializedAsync()
+    {
+        _navigationManager.NavigateTo("/auth/login");
+    }
+}
