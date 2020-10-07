@@ -2,7 +2,7 @@
 @inject NavigationManager _navigationManager
 
 @code { 
-    protected async override Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         _navigationManager.NavigateTo("/auth/login");
     }
