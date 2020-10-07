@@ -19,6 +19,7 @@ namespace PlannerApp.API.Controllers
             _userService = userService;
         }
 
+        // api/auth/register
         [HttpPost("register")]
         public async Task<IActionResult> RegisterAsync([FromBody] RegisterRequest model)
         {
@@ -28,6 +29,19 @@ namespace PlannerApp.API.Controllers
                 if (result.IsSuccess)
                     return Ok(result);
                 return BadRequest(result);
+            }
+            return BadRequest("Some properties are not valid.");
+        }
+
+        // api/auth/login
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginAsync([FromBody] LoginRequest model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _userService.LoginUserAsync(model);
+                if (result.IsSuccess)
+                    return Ok(result);
             }
             return BadRequest("Some properties are not valid.");
         }

@@ -15,7 +15,7 @@ namespace PlannerApp.Client
 {
     public class Program
     {
-        private const string URL = "https://localhost:44314";
+        private const string URL = "http://localhost:1368";
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);

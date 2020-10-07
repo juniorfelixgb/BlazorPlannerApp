@@ -62,12 +62,21 @@ namespace PlannerApp.API
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidAudience = "PlannerApp",
-                    ValidIssuer = "PlannerApp",
+                    ValidAudience = Configuration["AuthSettings:Audience"],
+                    ValidIssuer = Configuration["AuthSettings:Issuer"],
                     RequireExpirationTime = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("This is the key that we will use in the encryption")),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["AuthSettings:Key"])),
                     ValidateIssuerSigningKey = true
                 };
+            });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "MyAllowSpecificOrigins", 
+                builder =>
+                {
+                    builder.WithOrigins();
+                });
             });
 
             services.AddScoped<IUserService, UserService>();
@@ -87,7 +96,11 @@ namespace PlannerApp.API
 
             app.UseHttpsRedirection();
 
+            app.UseCors("MyAllowSpecificOrigins");
+
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
