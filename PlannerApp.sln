@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30524.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlannerApp.Client", "PlannerApp.Client\PlannerApp.Client.csproj", "{146B1D33-2A39-473C-86FA-57A174A9D1A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlannerApp.Client", "PlannerApp.Client\PlannerApp.Client.csproj", "{146B1D33-2A39-473C-86FA-57A174A9D1A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlannerApp.Shared", "PlannerApp.Shared\PlannerApp.Shared.csproj", "{1572A626-5BCB-46B9-A7F0-B1F27CA2A1A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlannerApp.Shared", "PlannerApp.Shared\PlannerApp.Shared.csproj", "{1572A626-5BCB-46B9-A7F0-B1F27CA2A1A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlannerApp.API", "PlannerApp.API\PlannerApp.API.csproj", "{AA25935E-E73F-4488-9154-F096D736B33D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlannerApp.API", "PlannerApp.API\PlannerApp.API.csproj", "{AA25935E-E73F-4488-9154-F096D736B33D}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PlannerApp.Database", "PlannerApp.Database\PlannerApp.Database.sqlproj", "{E3209581-6EE7-41F0-878C-713AB8710982}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,12 @@ Global
 		{AA25935E-E73F-4488-9154-F096D736B33D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA25935E-E73F-4488-9154-F096D736B33D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA25935E-E73F-4488-9154-F096D736B33D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3209581-6EE7-41F0-878C-713AB8710982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3209581-6EE7-41F0-878C-713AB8710982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3209581-6EE7-41F0-878C-713AB8710982}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E3209581-6EE7-41F0-878C-713AB8710982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3209581-6EE7-41F0-878C-713AB8710982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3209581-6EE7-41F0-878C-713AB8710982}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
