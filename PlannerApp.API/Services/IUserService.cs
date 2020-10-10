@@ -1,33 +1,37 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using PlannerApp.Shared.Models;
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using PlannerApp.Shared.Models;
 
 namespace PlannerApp.API.Services
 {
     public interface IUserService
     {
         Task<UserManagerResponse> RegisterUserAsync(RegisterRequest model);
+
         Task<UserManagerResponse> LoginUserAsync(LoginRequest model);
     }
 
     public class UserService : IUserService
     {
         private readonly UserManager<IdentityUser> _userManager;
+
         private readonly IConfiguration _configuration;
+
         public UserService(UserManager<IdentityUser> userManager,
                            IConfiguration configuration)
-        { 
+        {
             _userManager = userManager;
             _configuration = configuration;
         }
+
         public async Task<UserManagerResponse> RegisterUserAsync(RegisterRequest model)
         {
             if (model == null)
@@ -105,7 +109,11 @@ namespace PlannerApp.API.Services
             {
                 Message = TokenAsString,
                 IsSuccess = true,
-                ExpireDate = token.ValidTo
+                ExpireDate = token.ValidTo,
+                UserInfo = new Dictionary<string, string>()
+                {
+                    { "Email", user.Email }
+                }
             };
         }
     }

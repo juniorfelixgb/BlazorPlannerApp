@@ -36,11 +36,9 @@
                     <a href="#">Forgot your password?</a>
                 </span>
             </RadzenCard>
-
         </EditForm>
     </div>
 </div>
-
 
 @code {
     LoginRequest model = new LoginRequest();
@@ -57,10 +55,7 @@
             var userInfo = new LocalUserInfo()
             {
                 AccessToken = result.Message,
-                Email = result.UserInfo["Email"],
-                FirstName = result.UserInfo["FirstName"],
-                LastName = result.UserInfo["LastName"],
-                Id = result.UserInfo[System.Security.Claims.ClaimTypes.NameIdentifier]
+                Email = result.UserInfo["Email"]
             };
             await _storageService.SetItemAsync<LocalUserInfo>("User", userInfo);
             await _authenticationStateProvider.GetAuthenticationStateAsync();
