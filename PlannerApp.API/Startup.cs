@@ -75,7 +75,9 @@ namespace PlannerApp.API
                 options.AddPolicy(name: "MyAllowSpecificOrigins", 
                 builder =>
                 {
-                    builder.WithOrigins();
+                    builder.WithOrigins("http://localhost:1089")
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
                 });
             });
 
